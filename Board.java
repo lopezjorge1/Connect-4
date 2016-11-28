@@ -7,7 +7,16 @@ public class Board {
 	private char player2 = '@';
 	
 	public static void main(String[] args) {
-		Board connect4 = new Board();
+		Board connect4 = new Board(7,8);
+
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
+		System.out.println(connect4.play(2,7));
 	}
 	
 
@@ -83,7 +92,7 @@ public class Board {
 
 	public boolean play(int p, int c) {
 		boolean value = false;
-		if (((p != 1) && (p != 2)) || ((c < 0) || (c > columns))) {
+		if (((p != 1) && (p != 2)) || ((c < 0) || (c >= columns))) {
 			return value;
 		}
 
