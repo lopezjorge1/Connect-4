@@ -8,9 +8,6 @@ public class Board {
 	
 	public static void main(String[] args) {
 		Board connect4 = new Board();
-		System.out.println(connect4.getNumRows());
-		System.out.println(connect4.getNumCols());
-
 	}
 	
 
@@ -111,8 +108,9 @@ public class Board {
 		int horizontal = horizontalWin();
 		int vertical = verticalWin();
 		int diagonal = diagonalWin();
-		boolean isDraw = isBoardFull();
+		boolean isDraw = !(canPlay());
 
+		System.out.println(isDraw);
 
 		if (horizontal == 1 || horizontal == 2) {
 			return horizontal;
@@ -196,29 +194,4 @@ public class Board {
 		}
 		return 0;
 	}
-
-	public boolean isBoardFull() {
-		boolean value = true;
-
-		for (int x = board.length-1; x >= 0; x--) {
-			for (int y = 0; y < board[x].length; y++) {
-				if (board[x][y] == ' ') {
-					return false;
-				}
-			}
-		}
-		return value;
-	}
 }
-
-/*
-testIsFinishedFullBoard: 0/2
-testIsFinished: 0/4
-testIsFinishedHard: 0/6
-testPlayTrue: 0/2
-testPlayFalse: 0/2
-testGetToken: 0/2
-testGetTokenError: 0/2
-testPlayError: 0/2
-testIsNotFinished: 0/4
-*/
