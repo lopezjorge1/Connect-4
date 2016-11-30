@@ -92,7 +92,9 @@ public class Board {
 
 	public boolean play(int p, int c) {
 		boolean value = false;
-		if (((p != 1) && (p != 2)) || ((c < 0) || (c >= columns))) {
+		if (p < 0 || p > 3) {
+			return value;
+		} else if (c < 0 || c >= columns) {
 			return value;
 		}
 
@@ -117,9 +119,7 @@ public class Board {
 		int horizontal = horizontalWin();
 		int vertical = verticalWin();
 		int diagonal = diagonalWin();
-		boolean isDraw = !(canPlay());
-
-		System.out.println(isDraw);
+		boolean isFullBoard = !(canPlay());
 
 		if (horizontal == 1 || horizontal == 2) {
 			return horizontal;
@@ -127,7 +127,7 @@ public class Board {
 			return vertical;
 		} else if (diagonal == 1 || diagonal == 2) {
 			return diagonal;
-		} else if (isDraw) {
+		} else if (isFullBoard) {
 			return 0;
 		} else {
 			return -1;
@@ -189,7 +189,7 @@ public class Board {
 				}
 			}
 		}
-		//check diagnonal
+		//check diagnonal from right to left
 		for (int x = board.length-1; x > 2; x--) {
 			for (int y = board[x].length-1; y > 2; y--) {
 				if ((board[x][y] == board[x-1][y-1]) && (board[x-1][y-1] == board[x-2][y-2]) && (board[x-2][y-2] == board[x-3][y-3]) && (board[x][y] != ' ')) {
